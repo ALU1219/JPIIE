@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JPIIE-UBBC</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            line-height: 1.6;
+            background: linear-gradient(to bottom, #0099CC, #ffffff);
+        }
+
+        h1, h2 {
+            color: #333333;
+        }
+
+        .section {
+            margin-bottom: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            background: #f9f9f9;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .professor {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+
+        .professor:last-child {
+            border-bottom: none;
+        }
+
+        .status.available {
+            color: #00C851;
+            text-shadow: 0 0 8px #00FF6B;
+        }
+
+        .status.busy {
+            color: #ff4444;
+        }
+
+        button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        img {
+            width: 100px; /* Adjust size as needed */
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to JPIIE-UBBC</h1>
+    
+    <!-- Professor's Status Section -->
+    <div class="section" id="professors">
+        <h2>Professor's Status</h2>
+        <div class="professor">
+            <p>Engr. Nichole Maranan - <span class="status busy">Busy</span></p>
+            <button onclick="toggleStatus(0)">Toggle Status</button>
+        </div>
+        <div class="professor">
+            <p>Engr. Patricia Dimayuga - <span class="status busy">Busy</span></p>
+            <button onclick="toggleStatus(1)">Toggle Status</button>
+        </div>
+        <div class="professor">
+            <p>Engr. Walter Reyes - <span class="status busy">Busy</span></p>
+            <button onclick="toggleStatus(2)">Toggle Status</button>
+        </div>
+    </div>
+
+    <!-- File Sharing Section -->
+    <div class="section" id="fileSharing">
+        <h2>File Sharing</h2>
+        <button onclick="alert('File sharing will be implemented in the backend!')">Share a File</button>
+    </div>
+
+    <!-- Announcements Section -->
+    <div class="section" id="announcements">
+        <h2>Announcements</h2>
+        <p>Exam on the 10th January. Prepare well!</p>
+        <!-- More announcements can be added here -->
+    </div>
+
+    <!-- Attendance Section -->
+    <div class="section" id="attendance">
+        <h2>Attendance</h2>
+        <img src="your-qr-code-url-here.png" alt="QR Code for Attendance">
+        <p>Scan for Attendance</p>
+    </div>
+
+    <script>
+        let professorsStatus = [false, false, false]; // false indicates busy
+
+        function toggleStatus(index) {
+            professorsStatus[index] = !professorsStatus[index];
+            let statusElements = document.getElementsByClassName('status');
+            let statusText = professorsStatus[index] ? "Available" : "Busy";
+            let statusClass = professorsStatus[index] ? "available" : "busy";
+            statusElements[index].textContent = statusText;
+            statusElements[index].className = "status " + statusClass;
+        }
+    </script>
+</body>
+</html>
